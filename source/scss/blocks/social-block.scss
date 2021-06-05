@@ -1,244 +1,233 @@
 .social-block {
-  position: relative;
-
-  &:hover {
-    .social-block__list {
-      opacity: 1;
-      pointer-events: auto;
+    position: relative;
+    &:hover {
+        .social-block__list {
+            opacity: 1;
+            pointer-events: auto;
+            li {
+                animation-name: showElement;
+            }
+        }
     }
-  }
 }
 
 .social-block__toggler {
-  @include btn-reset;
-  position: relative;
-  display: block;
-  width: 4rem;
-  height: 4rem;
-  color: $c-dark;
-  border-radius: 50%;
-
-  @media (max-width: $tablet) and (orientation: portrait) {
-    display: none;
-  }
-
-  @media (max-width: $mobile) and (orientation: landscape) {
-    display: none;
-  }
-
-  &::before {
-    @include center;
-    content: "";
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background-color: $c-light;
-    border: 2px solid $c-light;
-    z-index: -1;
-  }
-
-  svg {
-    @include center;
+    transition: color .3s;
+    @include btn-reset;
+    position: relative;
     display: block;
-    width: 2.3rem;
-    height: 2.2rem;
-  }
-
-  &:hover,
-  .social-block--active & {
-    color: $c-purple;
-
+    width: 4rem;
+    height: 4rem;
+    color: $c-dark;
+    border-radius: 50%;
+    @media (max-width: $tablet) and (orientation: portrait) {
+        display: none;
+    }
+    @media (max-width: $mobile) and (orientation: landscape) {
+        display: none;
+    }
     &::before {
-      width: 112.5%;
-      height: 112.5%;
+        transition: all .3s;
+        @include center;
+        content: "";
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: $c-light;
+        border: 2px solid $c-light;
+        z-index: -1;
     }
-  }
-
-  &:focus {
-    color: $c-purple;
-    outline: none;
-
-    &::before {
-      border-color: $c-purple;
+    svg {
+        @include center;
+        display: block;
+        width: 2.3rem;
+        height: 2.2rem;
     }
-
-    & + .social-block__list {
-      opacity: 1;
-      pointer-events: auto;
+    &:hover,
+    .social-block--active & {
+        color: $c-purple;
+        &::before {
+            width: 112.5%;
+            height: 112.5%;
+        }
     }
-  }
-
-  &:active,
-  &:active:focus {
-    color: $c-light;
-
-    &::before {
-      width: 100%;
-      height: 100%;
-      background-color: $c-purple;
-      border-color: $c-purple;
+    &:focus {
+        color: $c-purple;
+        outline: none;
+        &::before {
+            border-color: $c-purple;
+        }
+        &+.social-block__list {
+            opacity: 1;
+            pointer-events: auto;
+        }
     }
-  }
+    &:active,
+    &:active:focus {
+        color: $c-light;
+        &::before {
+            width: 100%;
+            height: 100%;
+            background-color: $c-purple;
+            border-color: $c-purple;
+        }
+    }
 }
 
 .social-block__list {
-  @include list-reset;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  margin-top: 1.5rem;
-  opacity: 0;
-  pointer-events: none;
-
-  @media (min-width: $stop-scaling) {
-    margin-top: 15px;
-  }
-
-  @media (max-width: $tablet) and (orientation: portrait) {
-    position: static;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 0;
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  @media (max-width: $mobile) and (orientation: landscape) {
-    position: static;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 0;
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  &::before {
-    content: "";
+    @include list-reset;
     position: absolute;
-    bottom: 100%;
-    left: 0;
+    top: 100%;
     right: 0;
-    height: 1.5rem;
-
+    margin-top: 1.5rem;
+    opacity: 0;
+    pointer-events: none;
     @media (min-width: $stop-scaling) {
-      height: 15px;
+        margin-top: 15px;
     }
-  }
-
-  &:hover {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  &:focus-within {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .social-block--active & {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  li {
-    flex: none;
-    margin-bottom: 0.5rem;
-
-    @media (min-width: $stop-scaling) {
-      margin-bottom: 5px;
-    }
-
     @media (max-width: $tablet) and (orientation: portrait) {
-      margin: 0 1.25rem;
+        position: static;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0;
+        opacity: 1;
+        pointer-events: auto;
     }
-
     @media (max-width: $mobile) and (orientation: landscape) {
-      margin: 0 1.25rem;
+        position: static;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0;
+        opacity: 1;
+        pointer-events: auto;
     }
-  }
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        right: 0;
+        height: 1.5rem;
+        @media (min-width: $stop-scaling) {
+            height: 15px;
+        }
+    }
+    &:hover {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    &:focus-within {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .social-block--active & {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    li {
+        flex: none;
+        opacity: 0;
+        transform: translateY(5px);
+        margin-bottom: 0.5rem;
+        animation-duration: .3s;
+        animation-fill-mode: forwards;
+        @media (min-width: $stop-scaling) {
+            margin-bottom: 5px;
+        }
+        @media (max-width: $tablet) and (orientation: portrait) {
+            margin: 0 1.25rem;
+        }
+        @media (max-width: $mobile) and (orientation: landscape) {
+            margin: 0 1.25rem;
+        }
+        &:nth-child(2) {
+            animation-delay: .2s;
+        }
+        &:nth-child(3) {
+            animation-delay: .4s;
+        }
+    }
+}
+
+@keyframes showElement {
+    0% {
+        opacity: 0;
+        transform: translateY(5px)
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0)
+    }
 }
 
 .social-block__link {
-  position: relative;
-  display: block;
-  width: 4rem;
-  height: 4rem;
-  color: $c-light;
-  border: 2px solid transparent;
-  border-radius: 50%;
-
-  @media (min-width: $stop-scaling) {
-    width: 40px;
-    height: 40px;
-  }
-
-  @media (max-width: $tablet) and (orientation: portrait) {
+    position: relative;
+    display: block;
+    width: 4rem;
+    height: 4rem;
     color: $c-light;
-    background-color: $c-dark;
-  }
-
-  @media (max-width: $mobile) and (orientation: landscape) {
-    color: $c-light;
-    background-color: $c-dark;
-  }
-
-  &:hover {
-    color: $c-purple;
-  }
-
-  &:focus {
-    color: $c-purple;
-    background-color: $c-light;
-    border-color: $c-purple;
-    outline: none;
-  }
-
-  &:active,
-  &:active:focus {
-    color: $c-purple;
-    background-color: $c-light;
-    border-color: $c-light;
-  }
-
-  svg {
-    @include center;
-  }
-
-  &--fb {
-    svg {
-      width: 0.8rem;
-      height: 1.7rem;
-
-      @media (min-width: $stop-scaling) {
-        width: 8px;
-        height: 17px;
-      }
+    border: 2px solid transparent;
+    border-radius: 50%;
+    @media (min-width: $stop-scaling) {
+        width: 40px;
+        height: 40px;
     }
-  }
-
-  &--insta {
-    svg {
-      width: 1.5rem;
-      height: 1.5rem;
-
-      @media (min-width: $stop-scaling) {
-        width: 15px;
-        height: 15px;
-      }
+    @media (max-width: $tablet) and (orientation: portrait) {
+        color: $c-light;
+        background-color: $c-dark;
     }
-  }
-
-  &--vk {
-    svg {
-      width: 1.7rem;
-      height: 1rem;
-
-      @media (min-width: $stop-scaling) {
-        width: 10px;
-        height: 10px;
-      }
+    @media (max-width: $mobile) and (orientation: landscape) {
+        color: $c-light;
+        background-color: $c-dark;
     }
-  }
+    &:hover {
+        color: $c-purple;
+    }
+    &:focus {
+        color: $c-purple;
+        background-color: $c-light;
+        border-color: $c-purple;
+        outline: none;
+    }
+    &:active,
+    &:active:focus {
+        color: $c-purple;
+        background-color: $c-light;
+        border-color: $c-light;
+    }
+    svg {
+        @include center;
+    }
+    &--fb {
+        svg {
+            width: 0.8rem;
+            height: 1.7rem;
+            @media (min-width: $stop-scaling) {
+                width: 8px;
+                height: 17px;
+            }
+        }
+    }
+    &--insta {
+        svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            @media (min-width: $stop-scaling) {
+                width: 15px;
+                height: 15px;
+            }
+        }
+    }
+    &--vk {
+        svg {
+            width: 1.7rem;
+            height: 1rem;
+            @media (min-width: $stop-scaling) {
+                width: 10px;
+                height: 10px;
+            }
+        }
+    }
 }
