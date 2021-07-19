@@ -76,7 +76,7 @@
 
 .page-loaded .social-block__toggler::before {
     padding: 0;
-    animation: socialBlockActive .3s .1s backwards
+    animation: socialBlockActive .5s .1s backwards cubic-bezier(.6, -0.25, .34, 1.51)
 }
 
 @keyframes socialBlockActive {

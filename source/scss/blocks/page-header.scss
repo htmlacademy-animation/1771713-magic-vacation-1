@@ -34,7 +34,7 @@
     opacity: 0;
     color: $c-light;
     transition: transform .2s;
-    transform: translateX(-30px);
+    transform: translateX(-1rem);
     transition-timing-function: cubic-bezier(0, .90, .50, .40);
     @media (min-width: $stop-scaling) {
         top: -5px;
@@ -239,7 +239,7 @@
             height: 2px;
             background-color: $c-light;
             transition: width .3s;
-            left: 0;
+            right: 0;
             @media (max-width: $tablet) and (orientation: portrait) {
                 left: 0;
                 right: 0;
@@ -256,6 +256,8 @@
             color: $c-purple;
             outline: none;
             &::after {
+                right: auto;
+                left: 0;
                 width: 100%;
                 opacity: 1;
                 background-color: $c-purple !important;
