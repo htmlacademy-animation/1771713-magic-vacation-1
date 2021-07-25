@@ -1,12 +1,59 @@
+@keyframes hide-screen {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes show-screen {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .screen {
-    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    position: fixed;
+    // position: relative;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     z-index: 1;
     overflow: hidden;
+    animation-fill-mode: forwards;
+    &--intro.screen--hidden+.animation-screen {
+        opacity: 0;
+        transition: opacity .3s;
+    }
+    &--story {
+        &.screen--hidden {
+            animation-delay: .3s;
+        }
+    }
+    &--prizes {
+        &.active {
+            animation-delay: .3s;
+        }
+        &.screen--hidden {
+            // visibility: hidden;
+            // opacity: 0 !important;
+            // animation: none !important;
+        }
+    }
+    &.active {
+        opacity: 0;
+        animation-name: show-screen;
+    }
     &--hidden {
-        display: none;
+        opacity: 1;
+        animation-name: hide-screen;
     }
     @media (max-width: $tablet) and (orientation: portrait) {
         min-height: calc(var(--vh, 1vh) * 100);
@@ -270,10 +317,6 @@
     }
 }
 
-.screen--prizes {
-    background-color: $c-dark;
-}
-
 .screen--game {
     position: relative;
     background-color: $c-dark;
@@ -319,3 +362,56 @@
     background-color: $c-dark;
 }
 
+@keyframes hide-screen-bg {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes show-screen-bg {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+.screen--prizes {
+    &.active {
+        z-index: 3;
+        &~.screen__bg {
+            transform: translateY(0);
+            // transform: translateY(100%);
+            // animation-delay: .1s;
+            //     animation-name: show-screen-bg;
+            //     animation-fill-mode: forwards;
+            //     animation-duration: .3s;
+        }
+    }
+    &.screen--hidden {
+        &~.screen__bg {
+            transform: translateY(100%);
+            // transform: translateY(0);
+            // animation-delay: .1s;
+            // animation-name: hide-screen-bg;
+            // animation-fill-mode: forwards;
+            // animation-duration: .3s;
+        }
+    }
+}
+
+.screen__bg {
+    transform: translateY(100%);
+    transition: transform .3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    z-index: 2;
+    background-color: $c-dark;
+}
