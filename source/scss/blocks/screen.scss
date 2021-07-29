@@ -48,6 +48,7 @@
         }
     }
     &.active {
+        z-index: 2;
         opacity: 0;
         animation-name: show-screen;
     }
