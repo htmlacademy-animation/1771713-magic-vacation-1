@@ -5,19 +5,15 @@
   flex-direction: column;
   padding: 14.6rem 0 13rem;
   width: 100%;
-
   @media (min-width: $stop-scaling) {
     padding: 146px 0 65px;
   }
-
   @media (max-width: $tablet) and (orientation: portrait) {
     padding: 5.9rem 0 8rem;
   }
-
   @media (max-width: $tablet) and (orientation: landscape) {
     padding: 7rem 0 8rem;
   }
-
   @media (max-width: $mobile) and (orientation: landscape) {
     padding: 4rem 0 4rem;
   }
@@ -31,22 +27,18 @@
   font-size: 4.8rem;
   line-height: 0.906;
   letter-spacing: -0.04em;
-
   @media (min-width: $stop-scaling) {
     margin-bottom: 50px;
     font-size: 48px;
   }
-
   @media (max-width: $tablet) and (orientation: portrait) {
     margin-bottom: 1.8rem;
     font-size: 3.6rem;
   }
-
   @media (max-width: $tablet) and (orientation: landscape) {
     font-size: 3rem;
     margin-bottom: 2rem;
   }
-
   @media (max-width: $mobile) and (orientation: landscape) {
     font-size: 2rem;
     margin-bottom: 1rem;
@@ -59,29 +51,24 @@
   text-transform: uppercase;
   font-size: 2.4rem;
   line-height: 1.2;
-
   @media (min-width: $stop-scaling) {
     margin-left: 58px;
     max-width: 960px;
     font-size: 24px;
   }
-
   @media (max-width: $tablet) and (orientation: portrait) {
     margin-left: 2.5rem;
     padding-right: 1rem;
     font-size: 1.6rem;
   }
-
   @media (max-width: $tablet) and (orientation: landscape) {
     margin-left: 2rem;
     font-size: 2rem;
   }
-
   @media (max-width: $mobile) and (orientation: landscape) {
     max-width: 100%;
     font-size: 1.4rem;
   }
-
   p {
     margin: 0;
   }
@@ -93,25 +80,21 @@
   column-count: 2;
   column-gap: 9.6rem;
   margin: auto;
-  padding-top: 7rem;
+  padding-top: 5rem;
   max-width: 69.6rem;
-
   @media (min-width: $stop-scaling) {
     column-gap: 96px;
     padding-top: 70px;
     max-width: 696px;
   }
-
   @media (max-width: $tablet) and (orientation: portrait) {
     column-count: auto;
     column-gap: 0;
     padding: 0 2.5rem;
   }
-
   @media (max-width: $tablet) and (orientation: landscape) {
     padding-top: 0;
   }
-
   @media (max-width: $mobile) and (orientation: landscape) {
     column-gap: 4rem;
   }
@@ -119,31 +102,27 @@
 
 .rules__item {
   position: relative;
-  margin: 0 0 6.2rem;
+  margin: 2rem 0 4.2rem;
+  display: inline-block;
   padding-top: 0.6rem;
   padding-left: 6.5rem;
   break-inside: avoid;
-
   @media (min-width: $stop-scaling) {
     margin: 0 0 62px;
     padding-top: 6px;
     min-height: 5rem;
   }
-
   @media (max-width: $tablet) and (orientation: portrait) {
     margin-bottom: 1rem;
     padding-left: 5rem;
   }
-
   @media (max-width: $tablet) and (orientation: landscape) {
     margin-bottom: 2rem;
   }
-
   @media (max-width: $mobile) and (orientation: landscape) {
     padding-left: 5rem;
     font-size: 1.2rem;
   }
-
   &::before {
     content: counter(li);
     counter-increment: li;
@@ -159,7 +138,6 @@
     border-radius: 50%;
     line-height: 5rem;
     text-align: center;
-
     @media (max-width: $tablet) and (orientation: portrait) {
       top: 1rem;
       width: 2.5rem;
@@ -167,7 +145,6 @@
       line-height: 3rem;
       font-size: 1.4rem;
     }
-
     @media (max-width: $mobile) and (orientation: landscape) {
       top: 0.6rem;
       width: 2.5rem;
@@ -176,13 +153,72 @@
       font-size: 1.4rem;
     }
   }
-
   p {
     margin: 0;
-
     @media (max-width: $tablet) and (orientation: portrait) {
       min-height: calc(1.4rem * 2.2);
     }
+  }
+}
+
+.screen.active {
+  .rules__item {
+    &:before {
+      animation: pulse-rules-item 0.5s backwards;
+    }
+    p {
+      animation: show-rules-text 0.5s backwards;
+    }
+    @for $i from 0 through 4 {
+      &:nth-child(#{$i}):before {
+        animation-delay: (250ms * $i);
+      }
+    }
+    @for $i from 1 through 5 {
+      &:nth-child(#{$i}) p {
+        animation-delay: (250ms * $i);
+      }
+    }
+  }
+  .rules__link {
+    animation: animate-rules-link 0.5s 1s backwards;
+  }
+}
+
+@keyframes animate-rules-link {
+  0% {
+    color: transparent;
+    font-size: 0;
+    opacity: 0;
+    left: auto;
+  }
+  80% {
+    color: transparent;
+  }
+}
+
+@keyframes pulse-rules-item {
+  0% {
+    transform: scale(0);
+    color: rgba(255, 255, 255, 0);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    color: rgba(255, 255, 255, 1);
+  }
+}
+
+@keyframes show-rules-text {
+  0% {
+    opacity: 0;
+    transform: translateX(1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
@@ -190,22 +226,18 @@
   position: absolute;
   bottom: 6rem;
   right: 5.6rem;
-
   @media (min-width: $stop-scaling) {
     bottom: 60px;
     right: 56px;
   }
-
   @media (max-width: $tablet) and (orientation: portrait) {
     left: 0;
     right: 0;
     bottom: 4rem;
   }
-
   @media (max-width: $tablet) and (orientation: landscape) {
     bottom: 5rem;
   }
-
   @media (max-width: $mobile) and (orientation: landscape) {
     bottom: 2rem;
     right: 1.5rem;
