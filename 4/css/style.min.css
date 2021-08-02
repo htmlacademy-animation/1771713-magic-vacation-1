@@ -1002,6 +1002,22 @@ img {
   overflow: hidden;
 }
 
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .animation-screen {
   position: fixed;
   display: flex;
@@ -3051,7 +3067,7 @@ img {
   column-count: 2;
   column-gap: 9.6rem;
   margin: auto;
-  padding-top: 7rem;
+  padding-top: 5rem;
   max-width: 69.6rem;
 }
 @media (min-width: 2000px) {
@@ -3081,9 +3097,11 @@ img {
 
 .rules__item {
   position: relative;
-  margin: 0 0 6.2rem;
+  margin: 2rem 0 4.2rem;
+  display: inline-block;
   padding-top: 0.6rem;
   padding-left: 6.5rem;
+  break-inside: avoid;
 }
 @media (min-width: 2000px) {
   .rules__item {
@@ -3113,7 +3131,7 @@ img {
   content: counter(li);
   counter-increment: li;
   position: absolute;
-  top: 2px;
+  top: 0;
   left: 0;
   width: 4.5rem;
   height: 4.5rem;
@@ -3156,7 +3174,7 @@ img {
   animation: pulse-rules-item 0.5s backwards;
 }
 .screen.active .rules__item p {
-  animation: show-rules-text 0.5s backwards cubic-bezier(0.6, -0.25, 0.34, 1.51);
+  animation: show-rules-text 0.5s backwards;
 }
 .screen.active .rules__item:nth-child(0):before {
   animation-delay: 0ms;
@@ -3189,7 +3207,7 @@ img {
   animation-delay: 1250ms;
 }
 .screen.active .rules__link {
-  animation: animate-rules-link 0.5s 1.5s backwards;
+  animation: animate-rules-link 0.5s 1s backwards;
 }
 
 @keyframes animate-rules-link {
@@ -3208,11 +3226,22 @@ img {
     transform: scale(0);
     color: rgba(255, 255, 255, 0);
   }
+  60% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    color: white;
+  }
 }
 @keyframes show-rules-text {
   0% {
     opacity: 0;
     transform: translateX(1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 .rules__link {
@@ -3245,22 +3274,6 @@ img {
   }
 }
 
-@keyframes hide-screen {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-@keyframes show-screen {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 .screen {
   left: 0;
   top: 0;
@@ -3286,11 +3299,11 @@ img {
 .screen.active {
   z-index: 2;
   opacity: 0;
-  animation-name: show-screen;
+  animation-name: fadeIn;
 }
 .screen--hidden {
   opacity: 1;
-  animation-name: hide-screen;
+  animation-name: fadeOut;
 }
 @media (max-width: 1024px) and (orientation: portrait) {
   .screen {
