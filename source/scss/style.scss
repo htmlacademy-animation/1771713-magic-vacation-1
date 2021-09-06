@@ -5,7 +5,9 @@
 @import "general/fonts.scss";
 @import "general/scaffolding.scss";
 
-@import "blocks/animations.scss";
+@import "animations.scss";
+@import "accent-typography-build.scss";
+
 @import "blocks/animation-screen.scss";
 @import "blocks/btn.scss";
 @import "blocks/chat.scss";
