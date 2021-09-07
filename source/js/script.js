@@ -23,3 +23,9 @@ main();
 
 const fullPageScroll = new FullPageScroll();
 fullPageScroll.init();
+
+
+
+
+
+

@@ -1,4 +1,14 @@
 import throttle from 'lodash/throttle';
+import AccentTypographyBuild from "./accent-typography-build";
+
+
+const animationIntroTitle = new AccentTypographyBuild(`.intro__title`, 500, `active`, `transform`);
+const animationHistoryTitle = new AccentTypographyBuild(`.slider__item-title`, 500, `active`, `transform`);
+const animationIntroDate = new AccentTypographyBuild(`.intro__date`, 500, `active`, `transform`);
+const animationRulesTitle = new AccentTypographyBuild(`.rules__title`, 500, `active`, `transform`);
+const animationFooterDate = new AccentTypographyBuild(`.screen__footer-date`, 500, `active`, `transform`);
+const animationPrizeTitle = new AccentTypographyBuild(`.prizes__title`, 500, `active`, `transform`);
+const animationGameTitle = new AccentTypographyBuild(`.game__title`, 500, `active`, `transform`);
 
 export default class FullPageScroll {
   constructor() {
@@ -17,6 +27,13 @@ export default class FullPageScroll {
     window.addEventListener(`popstate`, this.onUrlHashChengedHandler);
 
     this.onUrlHashChanged();
+
+    animationIntroTitle.runAnimation();
+    animationHistoryTitle.runAnimation();
+    animationRulesTitle.runAnimation();
+    animationFooterDate.runAnimation();
+    animationPrizeTitle.runAnimation();
+    animationGameTitle.runAnimation();
   }
 
   onScroll(evt) {
@@ -37,6 +54,7 @@ export default class FullPageScroll {
     this.changeVisibilityDisplay();
     this.changeActiveMenuItem();
     this.emitChangeDisplayEvent();
+
   }
 
   changeVisibilityDisplay() {
@@ -46,6 +64,13 @@ export default class FullPageScroll {
     });
     this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
     this.screenElements[this.activeScreen].classList.add(`active`);
+    if (this.screenElements[this.activeScreen].classList.contains('screen--intro')) {
+      setTimeout(() => {
+        animationIntroDate.runAnimation();
+      }, 700);
+    } else {
+      animationIntroDate.destroyAnimation();
+    }
   }
 
   changeActiveMenuItem() {

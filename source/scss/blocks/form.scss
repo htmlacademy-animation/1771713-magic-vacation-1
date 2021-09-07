@@ -42,9 +42,6 @@
   border: 0;
   border-radius: 3rem;
   outline: none;
-  &_game {
-    width: 0;
-  }
   &:focus {
     border: 1px solid $c-purple;
   }
@@ -75,18 +72,25 @@
   }
 }
 
-.screen--game.active .form__field_game {
-  animation: formFieldWidth 0.5s 0s forwards;
+.form__field_game {
+  transition: width 0.5s ease-out, padding 0.5s ease-out;
+  @media (max-width: $mobile) {
+    transition: width 0.3s ease-out, padding 0.3s ease-out;
+  }
+}
+.screen--game:not(.active) .form__field_game {
+  width: 6rem;
+  padding: 0;
 }
 
-@keyframes formFieldWidth {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: calc(100% - 21rem);
-  }
-}
+// @keyframes formFieldWidth {
+//   0% {
+//     width: 0;
+//   }
+//   100% {
+//     width: calc(100% - 21rem);
+//   }
+// }
 
 .form__button {
   // flex-grow: 1;
@@ -144,4 +148,36 @@
       width: calc(100% - 5rem);
     }
   }
+}
+
+.result__form-submit {
+  opacity: 0;
+  transition: opacity 0.3s ease-out 0.7s;
+}
+
+.screen.screen--show .result__form-submit {
+  opacity: 1;
+}
+
+.result__form .form__field::placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease 1.3s;
+}
+
+.screen.screen--show .result__form .form__field::placeholder {
+  opacity: 1;
+}
+
+.result__form .form__field {
+  opacity: 0;
+  transition: opacity 0.3s ease-in 0.7s, width 0.3s ease-out 0.8s, padding 0.3s ease-out 1s;
+}
+
+.screen:not(.screen--show) .result__form .form__field {
+  width: 6rem;
+  padding: 0;
+}
+
+.screen.screen--show .result__form .form__field {
+  opacity: 1;
 }

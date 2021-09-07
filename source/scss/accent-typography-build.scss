@@ -1,0 +1,24 @@
+.animate-text__word {
+  display: inline-block;
+  overflow: hidden;
+  &:not(:first-child) {
+    margin-left: 5px;
+  }
+  &:not(:last-child) {
+    margin-right: 5px;
+  }
+}
+
+.animate-text__word > span {
+  transform: translate3d(0, 1em, 0);
+  display: inline-block;
+  vertical-align: sub;
+}
+
+.screen.active .animate-text.active .animate-text__word > span {
+  will-change: transform;
+}
+
+.screen.active .animate-text.active .animate-text__word > span {
+  transform: translate3d(0, 0, 0);
+}

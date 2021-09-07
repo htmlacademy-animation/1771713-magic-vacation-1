@@ -27,7 +27,7 @@
   font-weight: 400;
   font-size: 12rem;
   line-height: 0.906;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.049em;
   @media (min-width: $stop-scaling) {
     max-width: 990px;
     font-size: 120px;
@@ -158,4 +158,11 @@
     margin: 0 0 0 -5px;
     font-size: 48px;
   }
+  .animate-text__word {
+    padding-right: 2px;
+  }
+}
+
+.screen.active .intro__label {
+  animation: fadeIn 0.5s 1.2s backwards;
 }
