@@ -83,17 +83,7 @@
   padding: 0;
 }
 
-// @keyframes formFieldWidth {
-//   0% {
-//     width: 0;
-//   }
-//   100% {
-//     width: calc(100% - 21rem);
-//   }
-// }
-
 .form__button {
-  // flex-grow: 1;
   @media (orientation: portrait) {
     position: relative;
     flex: none;

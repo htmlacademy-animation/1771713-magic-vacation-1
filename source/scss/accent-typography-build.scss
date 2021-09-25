@@ -17,8 +17,5 @@
 
 .screen.active .animate-text.active .animate-text__word > span {
   will-change: transform;
-}
-
-.screen.active .animate-text.active .animate-text__word > span {
   transform: translate3d(0, 0, 0);
 }

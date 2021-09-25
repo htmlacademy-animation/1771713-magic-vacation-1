@@ -344,6 +344,7 @@
   text-transform: uppercase;
   font-size: 2.4rem;
   line-height: 1.2;
+  transition: color 0.5s 1s;
   color: $c-light;
 
   @media (min-width: $stop-scaling) {
@@ -377,6 +378,7 @@
     width: 4rem;
     height: 4rem;
     color: $c-dark;
+    transition: transform 0.5s 1s, opacity 0.5s 1s;
 
     @media (min-width: $stop-scaling) {
       margin-left: 15px;
@@ -435,6 +437,16 @@
       height: 100%;
       background-color: $c-purple;
       border-color: $c-purple;
+    }
+  }
+}
+
+.screen.screen--result:not(.screen--show) {
+  .result__button {
+    color: transparent;
+    span {
+      transform: translate3d(10rem, 0, 0);
+      opacity: 0;
     }
   }
 }
