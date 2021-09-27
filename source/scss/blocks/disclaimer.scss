@@ -1,6 +1,7 @@
 .disclaimer {
   color: $c-dark;
   background-color: $c-light;
+  transition: color 0.5s 0.3s;
 
   @media (max-width: $tablet) and (orientation: portrait) {
     font-weight: 400;
@@ -89,4 +90,8 @@
       padding: 0.9rem 0;
     }
   }
+}
+
+.screen:not(.active) .disclaimer {
+  color: transparent;
 }

@@ -64,12 +64,22 @@ export default class FullPageScroll {
     });
     this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
     this.screenElements[this.activeScreen].classList.add(`active`);
+    if (this.screenElements[this.activeScreen].classList.contains('screen--story')) {
+      document.querySelector('body').classList.add('screen-story-active')
+    } else {
+      document.querySelector('body').classList.remove('screen-story-active')
+    }
     if (this.screenElements[this.activeScreen].classList.contains('screen--intro')) {
       setTimeout(() => {
         animationIntroDate.runAnimation();
       }, 700);
     } else {
       animationIntroDate.destroyAnimation();
+    }
+    if (this.screenElements[this.activeScreen].classList.contains('screen--prize')) {
+      document.querySelector('.js-footer').classList.add('show')
+    } else {
+      document.querySelector('body').classList.remove('screen-story-active')
     }
   }
 

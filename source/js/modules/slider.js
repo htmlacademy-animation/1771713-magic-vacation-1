@@ -50,14 +50,21 @@ export default () => {
           enabled: true
         },
         on: {
+          init: () => {
+            document.querySelector('body').setAttribute('data-theme', 'ui-purple');
+          },
           slideChange: () => {
             if (storySlider.activeIndex === 0) {
               sliderContainer.style.backgroundImage = `url("img/slide1.jpg")`;
+              document.querySelector('body').setAttribute('data-theme', 'ui-purple');
             } else if (storySlider.activeIndex === 2) {
+              document.querySelector('body').setAttribute('data-theme', 'ui-blue');
               sliderContainer.style.backgroundImage = `url("img/slide2.jpg")`;
             } else if (storySlider.activeIndex === 4) {
+              document.querySelector('body').setAttribute('data-theme', 'ui-blue-light');
               sliderContainer.style.backgroundImage = `url("img/slide3.jpg")`;
             } else if (storySlider.activeIndex === 6) {
+              document.querySelector('body').setAttribute('data-theme', '');
               sliderContainer.style.backgroundImage = `url("img/slide4.jpg")`;
             }
           },
